@@ -6,7 +6,7 @@ import LoginForm from '../Components/Login/Form'
 
 const Login : React.SFC = () => (
     <Layout>
-        <LoginForm/>
+        <LoginForm code="test"/>
     </Layout>
 );
 

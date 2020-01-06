@@ -8,7 +8,7 @@ type Props = {
 
 const Layout: React.SFC<Props> = ({ children }) => (
     <div>
-    <Header/>
+    
 	<div>
         
         <div style={{ marginTop : '100px' }}>
@@ -17,7 +17,7 @@ const Layout: React.SFC<Props> = ({ children }) => (
             
         </div>
     </div>
-    <Footer/>
+   
     </div>
 );
 
