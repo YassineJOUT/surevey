@@ -15,9 +15,7 @@ import { Styled } from './index.styled'
             <Styled.div>
                 <h2>Saisir vos informations</h2>
                 <Styled.form action="">
-                    <Styled.Label>
-                        Code
-                    </Styled.Label>
+                    
                     <Styled.input type="text" name="nom" placeholder="nom" />
                     <Styled.input type="text" name="prenom" placeholder="prenom" />
                     <Styled.input type="text" name="email" placeholder="email" />

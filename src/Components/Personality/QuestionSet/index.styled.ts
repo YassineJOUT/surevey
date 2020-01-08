@@ -11,6 +11,9 @@ font-family: Arial, Helvetica, sans-serif;
 width: 60%;
 margin: 40px auto
 `;
+
+const title = styled.h2`margin: 40px auto;`;
+const letter = styled.h3`margin-left: 30px ;`;
 const innerdiv = styled.div`
 border: 3px solid #f1f1f1;
 padding: 20px;
@@ -56,7 +59,7 @@ user-select: none;
   background-color: #ccc;
 }
 & ${checkbox}:checked ~ ${checkmark}  {
-  background-color: #2196F3;
+  background-color:  #1abc9c;
 }
 & inp${checkbox}ut:checked ~ ${checkmark}:after {
   display: block;
@@ -78,7 +81,7 @@ user-select: none;
 
 
 const Button__Text = styled.button`
-background-color: #4CAF50;
+background-color:  #1abc9c;
 color: white;
 padding: 14px 20px;
 border: none;
@@ -100,5 +103,7 @@ export const Styled = {
   Label,
   checkmark,
   container,
-  checkbox
+  checkbox,
+  title,
+  letter,
 };

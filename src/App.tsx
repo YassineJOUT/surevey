@@ -5,8 +5,7 @@ import Survey from './Pages/Survey';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-        
+    <div>
         <Survey/>
     </div>  
   );

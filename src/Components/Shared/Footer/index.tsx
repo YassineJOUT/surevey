@@ -1,5 +1,5 @@
 import React from 'react'
-
-export const Footer: React.FC  = () => <div>
-    Footer
-</div>
+import { Styled } from './index.styled'
+export const Footer: React.FC  = () => <Styled.footer>
+    
+</Styled.footer>

@@ -7,18 +7,16 @@ type Props = {
 }
 
 const Layout: React.SFC<Props> = ({ children }) => (
-    <div>
+
     
 	<div>
-        
+  <Header/>
         <div style={{ marginTop : '100px' }}>
-            
                 { children }
-            
         </div>
+  <Footer/>
     </div>
-   
-    </div>
+
 );
 
 export default Layout;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Styled } from './index.styled'
 import { questionSet,titles,letters } from '../data';
- 
+import { Header } from '../../Shared/Header'
     
   class QuestionSet extends Component {
       
@@ -10,12 +10,12 @@ import { questionSet,titles,letters } from '../data';
         const content = questionSet.map((element,key )=> {
             {t = 1 - t}
             return (
-            <div>
+            <Styled.div>
                 {
-                    t ? <h2>{titles[key/2]}</h2>  : <h2></h2>
+                    t ? <Styled.title>{titles[key/2]}</Styled.title>  : <h2></h2>
                 }
-                <h3>{letters[key]}</h3>
-                <Styled.div key={key}>
+                <Styled.letter>{letters[key]}</Styled.letter>
+                <div key={key}>
                     {
                     element.map((elem,k )=> (
                         <Styled.innerdiv  key={k} >
@@ -28,8 +28,8 @@ import { questionSet,titles,letters } from '../data';
                         </Styled.innerdiv>
                     ))
                     }
-                </Styled.div> 
-        </div>
+                </div> 
+        </Styled.div>
          )
         
         }
@@ -37,15 +37,19 @@ import { questionSet,titles,letters } from '../data';
      );
      console.log(content)
         return (
-
-            <Styled.div>
-                <h2>Repondez au questionnaire suivant</h2>
+            <div>
+                
+                            <Styled.div>
+                <h2>Repondez au questionnaire suivant :</h2>
                 {
                     content
                 }
              
                <Styled.Button__Text>Valider</Styled.Button__Text>
             </Styled.div>
+
+            </div>
+
         )
     }
   }
