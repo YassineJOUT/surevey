@@ -15,6 +15,11 @@ export const configureStore = (history: History): Store<ApplicationState> => {
             code:'',
             isLoading: false
         },
+        student:{
+            error:'',
+            isLoading: false
+
+        }
     };
     let savedState = LoadState();
     if(savedState === undefined ) savedState = initialState;

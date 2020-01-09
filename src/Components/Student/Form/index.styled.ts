@@ -28,6 +28,15 @@ cursor: pointer;
 width: 40%;
 `;
 
+
+const error = styled.span`
+color: red;
+display: block;
+text-align: center;
+${Button__Text}{
+  broder-color: red ;
+}`;
+
 const Label = styled.label`
 font-weight: bold,
 text-align: left;
@@ -38,5 +47,6 @@ export const Styled = {
   div,
   form,
   Button__Text,
-  Label
+  Label,
+  error
 };

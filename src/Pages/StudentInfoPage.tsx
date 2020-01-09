@@ -6,7 +6,7 @@ import StudentForm from '../Components/Student/Form'
 
 const Student : React.SFC = () => (
     <Layout>
-        <StudentForm nom="" prenom="" tel="" email=""/>
+        <StudentForm />
     </Layout>
 );
 

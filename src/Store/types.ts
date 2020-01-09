@@ -7,10 +7,8 @@ export interface loginState{
 }
 
 export interface studentState{
-    nom: string,
-    prenom: string,
-    tel: string,
-    email: string,
+
+    error: string,
     isLoading: boolean
 }
 
