@@ -1,28 +1,65 @@
 import React, { Component } from 'react'
 import { Styled } from './index.styled'
+import { connect } from 'react-redux';
+import { login } from '../../../store/Login/actions';
+import { ApplicationState } from '../../../store';
+
+
+interface ILoginProps {
+  login: Function;
+}
 
   
-  interface ILoginProps {
-    code: string;
-  }
+  interface ILoginStateProps {
+  code: string;
+  isLoggedIn: boolean;
+  error: string;
+  isLoading: boolean;
+}
     
-  class LoginForm extends Component<ILoginProps> {
+type IProps = ILoginProps & ILoginStateProps;
+
+  class LoginForm extends Component<IProps> {
+
+    handleSubmit = (
+     event: React.FormEvent<HTMLFormElement>
+    ) => {
+      //const code = event.target.
+      const code: string = "Test";
+      this.props.login(code);
+    event.preventDefault();
+    };
+
+    
     render = () => {
         return (
             <Styled.div>
                 <h2>Formulaire d'authentification</h2>
-                <Styled.form action="">
+                <Styled.form onSubmit={this.handleSubmit}>
+                { this.props.error &&
+                <Styled.error>{this.props.error}</Styled.error>
+            }
+               
                     <Styled.Label>
                         Code
                     </Styled.Label>
                     <Styled.input type="text" name="code" placeholder="code" />
-                    <Styled.Button__Text>Valider</Styled.Button__Text>
+                    {this.props.isLoading && <Styled.Button__Text type="submit" disabled>Loading.. </Styled.Button__Text>}
+                    {!this.props.isLoading && <Styled.Button__Text type="submit">Valider</Styled.Button__Text>}
+                    
                 </Styled.form>
             </Styled.div>
         )
     }
   }
+  const mapStateToProps = ({ login }: ApplicationState) => ({
+    code: login.code,
+    isLoggedIn: login.isLoggedIn,
+    error: login.error,
+    isLoading: login.isLoading
+  });
+  
+  const mapActionsToProps = { login };
 
 
-
-export default LoginForm;
+export default connect(mapStateToProps, mapActionsToProps)(LoginForm);

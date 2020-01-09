@@ -35,10 +35,19 @@ font-weight: bold,
 text-align: left;
 `;
 
+const error = styled.span`
+color: red;
+display: block;
+text-align: center;
+${Button__Text}{
+  broder-color: red ;
+}`;
+
 export const Styled = {
   input,
   div,
   form,
   Button__Text,
-  Label
+  Label,
+  error
 };
