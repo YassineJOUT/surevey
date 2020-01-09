@@ -1,13 +1,10 @@
 import { Reducer, AnyAction } from "redux";
-import {loginState} from '../types'
+import { loginState } from '../types';
 import { USER_LOGIN, USER_LOGIN_ERROR,USER_LOGIN_SUCCESS} from './types'
 import { createReducer} from '../../utilities/ReducerHelper'
+
 const initialState: loginState = {
-    userInfo: {
-        email: '',
-        id: '',
-        username: ''
-    },
+    code: '',
     error: '',
     isLoggedIn: false,
     token: '',
