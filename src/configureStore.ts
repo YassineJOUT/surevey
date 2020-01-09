@@ -12,29 +12,9 @@ export const configureStore = (history: History): Store<ApplicationState> => {
             error: '',
             isLoggedIn: false,
             token: '',
-            userInfo:{
-                email: '',
-                id: '',
-                username: ''
-            },
+            code:'',
             isLoading: false
         },
-        register:{
-            isLoading: false,
-            error: ''
-        },
-        passwordForgotten:{
-            confirmationCode: '',
-            email: '',
-            error: '',
-            isLoading: false,
-            successMessage: ''
-        },
-        resetPassword: {
-            error: '',
-            successMessage: '',
-            isLoading: false
-        }
     };
     let savedState = LoadState();
     if(savedState === undefined ) savedState = initialState;
