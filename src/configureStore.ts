@@ -5,6 +5,7 @@ import thunk, { ThunkMiddleware } from 'redux-thunk';
 import { LoginActionsType } from "./store/Login/types";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { LoadState,SaveState } from './utilities/localStorage';
+import Survey from "./Pages/Survey";
 
 export const configureStore = (history: History): Store<ApplicationState> => {
     let initialState: ApplicationState = {
@@ -16,10 +17,17 @@ export const configureStore = (history: History): Store<ApplicationState> => {
             isLoading: false
         },
         student:{
+            students: [],
             error:'',
             isLoading: false
 
+        },
+        survey: {
+            result: '',
+            score: [],
+            isLoading: false
         }
+        
     };
     let savedState = LoadState();
     if(savedState === undefined ) savedState = initialState;

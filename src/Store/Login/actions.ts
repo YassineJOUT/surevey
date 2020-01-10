@@ -10,12 +10,13 @@ export const userLogin = (code: string): LoginActionsType => {
    return action(
     USER_LOGIN,
     code
-)}
-;
-export const userLoginSuccess = (code: string,token: string): LoginActionsType => action(
+)};
+
+export const userLoginSuccess = (code: string,isAdmin: boolean): LoginActionsType => action(
     USER_LOGIN_SUCCESS,
-    {code,token}
+    {code,isAdmin}
 );
+
 export const userLoginError = (errorMsg: string): LoginActionsType => action(
     USER_LOGIN_ERROR,
     errorMsg
@@ -23,21 +24,26 @@ export const userLoginError = (errorMsg: string): LoginActionsType => action(
 
 export const login = (code: string) => {
     return (dispatch: Dispatch<LoginActionsType>) => {
-        
         console.log('login Dispatched');
         dispatch(userLogin(code));
-        appService.login(code).then(
-            u => {
-                console.log('Login success dispatched');
-                console.log(u);
-                dispatch(userLoginSuccess(u.data.code,u.data.token));
+        const resultset = appService.login(code);
+        console.log('resultset');
+        console.log(resultset);
+        if(resultset.success){
+            console.log('Login success dispatched');
+            dispatch(userLoginSuccess(code,resultset.isAdmin));
+            if(resultset.isAdmin)
                 history.push('/student');
-            }
-        ).catch(err => {
+            else
+                history.push('/admin');
+        }else{
             console.log('login error dispatched');
-            console.log(err);
+            
             dispatch(userLoginError('Login was unsucceeded'));
-        });
+        }
+           
+            
+       
 
         }
 }

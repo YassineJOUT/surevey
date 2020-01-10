@@ -1,12 +1,10 @@
 import { Reducer, AnyAction } from "redux";
 import { ICredentials, STUDENT_REGISTER, STUDENT_REGISTER_ERROR, STUDENT_REGISTER_SUCCESS} from './types'
 import { createReducer} from '../../utilities/ReducerHelper'
-interface registerState {
-        isLoading: boolean,
-        error: string
+import { studentState } from "../types";
 
-}
-const initialState: registerState = {
+const initialState: studentState = {
+    students:[],
     isLoading: false,
     error: ''
    
@@ -34,5 +32,5 @@ const REGISTER_HANDLERS = {
 // 
 
 
-const SignupReducer: Reducer<registerState> = createReducer(initialState, REGISTER_HANDLERS);
+const SignupReducer: Reducer<studentState> = createReducer(initialState, REGISTER_HANDLERS);
 export {  SignupReducer  };

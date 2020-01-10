@@ -3,7 +3,7 @@ import { Styled } from './index.styled'
 import { connect } from 'react-redux';
 import { login } from '../../../store/Login/actions';
 import { ApplicationState } from '../../../store';
-
+import _ from 'lodash';
 
 interface ILoginProps {
   login: Function;
@@ -20,16 +20,21 @@ interface ILoginProps {
 type IProps = ILoginProps & ILoginStateProps;
 
   class LoginForm extends Component<IProps> {
-
     handleSubmit = (
      event: React.FormEvent<HTMLFormElement>
     ) => {
-      //const code = event.target.
-      const code: string = "Test";
-      this.props.login(code);
+
+      const loginField = document.querySelector('.code') as HTMLInputElement;
+        let loginCode: string = (loginField) ? loginField.value : '';
+        if (!_.isEmpty(loginCode)) {
+            this.props.login(loginCode);
+        }
+   
+      
     event.preventDefault();
     };
 
+   
     
     render = () => {
         return (
@@ -43,7 +48,7 @@ type IProps = ILoginProps & ILoginStateProps;
                     <Styled.Label>
                         Code
                     </Styled.Label>
-                    <Styled.input type="text" name="code" placeholder="code" />
+                    <Styled.input type="text" name="code" className="code" placeholder="code" />
                     {this.props.isLoading && <Styled.Button__Text type="submit" disabled>Loading.. </Styled.Button__Text>}
                     {!this.props.isLoading && <Styled.Button__Text type="submit">Valider</Styled.Button__Text>}
                     

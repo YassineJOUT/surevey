@@ -2,12 +2,12 @@ import styled from 'styled-components'
 // Button.styles.ts
 const input = styled.input`
 width: 100%;
-
 padding: 12px 20px;
 margin: 8px 0;
 display: inline-block;
 border: 1px solid #ccc;
 box-sizing: border-box;`;
+
 const div = styled.div`
 font-family: Arial, Helvetica, sans-serif;
 width: 60%;

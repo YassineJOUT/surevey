@@ -15,7 +15,7 @@ interface UserLoginAction {
   
 interface UserLoginSuccessAction {
     type: typeof USER_LOGIN_SUCCESS
-    payload: {code: string,token: string}
+    payload: {code: string,isAdmin: boolean}
 }
   
 interface UserLoginErrorAction {

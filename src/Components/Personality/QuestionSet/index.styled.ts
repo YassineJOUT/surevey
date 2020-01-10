@@ -95,6 +95,10 @@ font-weight: bold,
 text-align: left;
 `;
 
+const form = styled.form`
+border: 3px solid #f1f1f1;
+padding: 50px`;
+
 export const Styled = {
   input,
   div,
@@ -106,4 +110,5 @@ export const Styled = {
   checkbox,
   title,
   letter,
+  form
 };

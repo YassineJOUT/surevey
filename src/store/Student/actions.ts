@@ -26,18 +26,15 @@ export const register = (user:ICredentials) => {
        
         console.log('login Dispatched');
         dispatch(userSignUp(user));
-        appService.signUp(user).then(
-            u => {
-                console.log('Login success dispatched');
-                console.log(u);
-                dispatch(userSignUpSuccess(u.data.message));
-                history.push('/login');
-            }
-        ).catch(err => {
-            console.log('sign up error dispatched');
-            console.log(err);
+        const resultset = appService.signUp(user);
+        if(resultset.success){
+                dispatch(userSignUpSuccess('message'));
+                history.push('/survey');
+        }
+        else{
             dispatch(userSignUpError('sign un unsucceeded'));
-        });
+        }
+                
 
         }
 }
