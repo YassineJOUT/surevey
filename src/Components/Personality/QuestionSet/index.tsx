@@ -1,13 +1,31 @@
 import React, { Component } from 'react'
 import { Styled } from './index.styled'
 import { questionSet,titles,letters } from '../data';
+import { ApplicationState } from '../../../store';
+import { connect } from 'react-redux';
+import { doSurvey } from '../../../store/Survey/actions';
+import { history } from '../../../utilities/history';
 
+interface ISurveyProps {
+    doSurvey: Function;
+  }
+    interface ISurveyStateProps {
+        result: string;
+        score: [];
+        isLoading: boolean;
+        nom: string,
+        prenom: string
+  }
+      
+  type IProps = ISurveyProps & ISurveyStateProps;
 
 interface surveyState {
-    survey: Array<number>[]
+    survey: Array<number>[];
+    isResult: boolean,
+    result: string
 }
 
-  class QuestionSet extends Component<{},surveyState> {
+  class QuestionSet extends Component<IProps,surveyState> {
 
       constructor(props: any){
         super(props);
@@ -16,7 +34,9 @@ interface surveyState {
             arr[i] = Array<number>(10).fill(0);
         }        
         this.state = {
-            survey: arr
+            survey: arr,
+            isResult: false,
+            result:''
         }
     }
 
@@ -41,15 +61,24 @@ interface surveyState {
         } 
         return res.join('');
     }
+    
     handleSubmit = (
         event: React.FormEvent<HTMLFormElement>
        ) => {
          //const code = event.target.
-         this.calculateScore();
+         const result = this.calculateScore();
+         this.setState({
+
+            result,
+            isResult: true
+         });
          //this.props.login(code);
        event.preventDefault();
        };
-   
+       logout = () => {
+        this.props.doSurvey(this.state.result);
+        history.push('/login');
+       }
     render = () => {
         let t = 0;
         let c = 0;
@@ -83,21 +112,31 @@ interface surveyState {
                 </div> 
         </Styled.div>
          )        
-        }
-        
+        }  
      );
-     
+      
         return (
             <div>
-                
+            
             <Styled.div>
+            <h3> Bonjour {this.props.nom +" "+ this.props.prenom}</h3>
             <Styled.form onSubmit={this.handleSubmit}>
-                    <h2>Repondez au questionnaire suivant :</h2>
+                {console.log(this.state)}
+            {this.state.isResult===false ? <div> <h2>Repondez au questionnaire suivant :</h2>
                     {
                         content
                     }
+                     <Styled.Button__Text type="submit">Valider</Styled.Button__Text>
+                    </div> : <span>
+                        <h2>Le resultat do votre teste de personnalité est :</h2>
+                        {
+                    this.state.result 
+                    }
+                     <Styled.Button__Text type="button" onClick={this.logout}>Logout</Styled.Button__Text>
+                     </span>}
+                   
                 
-                <Styled.Button__Text type="submit">Valider</Styled.Button__Text>
+               
                </Styled.form>
             </Styled.div>
 
@@ -108,5 +147,15 @@ interface surveyState {
   }
 
 
+  const mapStateToProps = ({ survey,student }: ApplicationState) => ({
+    result: survey.result,
+    score: survey.score,
+    isLoading: survey.isLoading,
+    nom: student.students[student.students.length-1].nom,
+    prenom: student.students[student.students.length-1].prenom
+  });
+  
+  const mapActionsToProps = { doSurvey };
 
-export default QuestionSet;
+
+export default connect(mapStateToProps, mapActionsToProps)(QuestionSet);

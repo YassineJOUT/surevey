@@ -1,3 +1,5 @@
+import { ICredentials } from "./Student/types";
+
 export interface loginState{
     code: string;
     isLoggedIn: boolean;
@@ -7,7 +9,7 @@ export interface loginState{
 }
 
 export interface studentState{
-    students: [];
+    students: ICredentials[];
     error: string;
     isLoading: boolean;
 }

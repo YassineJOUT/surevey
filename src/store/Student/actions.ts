@@ -1,6 +1,6 @@
 
 import { action } from 'typesafe-actions';
-import { ICredentials,STUDENT_REGISTER,STUDENT_REGISTER_SUCCESS,STUDENT_REGISTER_ERROR, registerActionsType } from './types'
+import { ICredentials,STUDENT_REGISTER,STUDENT_REGISTER_SUCCESS,STUDENT_REGISTER_ERROR,STUDENT_RESULT, registerActionsType } from './types'
 import { history } from '../../utilities/history';
 import { Dispatch } from 'redux';
 import { appService } from '../../Services/app.service'
@@ -13,13 +13,17 @@ export const userSignUp = (credentials: ICredentials): registerActionsType => {
     credentials
 )}
 ;
-export const userSignUpSuccess = (successMsg: string): registerActionsType => action(
+export const userSignUpSuccess = (user: ICredentials): registerActionsType => action(
     STUDENT_REGISTER_SUCCESS,
-    successMsg
+    user
 );
 export const userSignUpError = (errorMsg: string): registerActionsType => action(
     STUDENT_REGISTER_ERROR,
     errorMsg
+);
+export const setResult = (result: string): registerActionsType => action(
+    STUDENT_RESULT,
+    result
 );
 export const register = (user:ICredentials) => {
     return (dispatch: Dispatch<registerActionsType>) => {
@@ -28,7 +32,7 @@ export const register = (user:ICredentials) => {
         dispatch(userSignUp(user));
         const resultset = appService.signUp(user);
         if(resultset.success){
-                dispatch(userSignUpSuccess('message'));
+                dispatch(userSignUpSuccess(user));
                 history.push('/survey');
         }
         else{

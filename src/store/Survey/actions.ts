@@ -8,6 +8,9 @@ import {
 import { history } from "../../utilities/history";
 import { Dispatch } from "redux";
 import { appService } from "../../Services/app.service";
+import { setResult } from "../Student/actions";
+import { registerActionsType } from "../Student/types";
+
 // user registration
 
 export const studentSurvey = (result: string): surveyActionsType => {
@@ -17,16 +20,17 @@ export const studentSurveySuccess = (successMsg: string): surveyActionsType =>
   action(STUDENT_SURVEY_SUCCESS, successMsg);
 export const studentSurveyError = (errorMsg: string): surveyActionsType =>
   action(STUDENT_SURVEY_ERROR, errorMsg);
-export const register = (result: string) => {
-  return (dispatch: Dispatch<surveyActionsType>) => {
-    console.log("login Dispatched");
-    dispatch(studentSurvey(result));
-    const resultset = appService.studentSurvey(result);
+export const doSurvey = (result: string) => {
+  return (dispatch: Dispatch<registerActionsType>) => {
+    console.log("result Dispatched");
+    dispatch(setResult(result));
+   /* const resultset = appService.studentSurvey(result);
     if (resultset.success) {
       dispatch(studentSurveySuccess("message"));
       history.push("/result");
     } else {
       dispatch(studentSurveyError("sign un unsucceeded"));
     }
-  };
+  };*/
+};
 };

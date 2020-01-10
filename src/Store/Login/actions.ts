@@ -35,7 +35,7 @@ export const login = (code: string) => {
             if(resultset.isAdmin)
                 history.push('/student');
             else
-                history.push('/admin');
+                history.push('/student');
         }else{
             console.log('login error dispatched');
             

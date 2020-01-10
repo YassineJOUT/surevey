@@ -27,7 +27,7 @@ const studentSurvey = (result : string) => {
     //return axios.post(endPoint+'signin', params, headersOptions);
 
    // store UserData
-   return {success: false};
+   return {success: true};
 };
 
 
