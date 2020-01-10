@@ -24,40 +24,48 @@ interface ISurveyProps {
     handleSubmit = (
         event: React.FormEvent<HTMLFormElement>
        ) => {
-         //this.props.login(code);
+        const nbr = document.querySelector('.nbr') as HTMLInputElement;
+        let nbrr: number = (nbr) ? parseInt(nbr.value)  : 0;
+        
+         console.log(nbrr);
+         this.getgroupes(nbrr);
+         console.log();
        event.preventDefault();
        };
+    getgroupes = (nbr: number) => {
+       /* let array = ['INFJ', 'ISFP', 'ESFP', 'ESFJ', 
+                     'ENFP', 'INFP', 'ENTP', 'ENTJ',
+                     'ENFP', 'ESTP', 'ENFP', 'ISFJ', 
+                     'ISTJ', 'ISTP', 'INTJ', 'ESFJ'];
+
+        const result = new Array(nbr);
+        for()
+        const grp1 = array.filter(e => e.includes("L"));
+        const grp2 = array.filter(e => e.includes("S"));
+        const grp3 = array.filter(e => e.includes("P"));
+        const grp5 = array.filter(e => e.includes("J"));
+        const grp4 = array.filter(e => e.includes("E"));
+        const notgrp4 = array.filter(e => !e.includes("E"));
+        const grp6 = array.filter(e => e.includes("I"));
+
+        console.log(grp1);
+        console.log(grp2);*/
+
+    }
     render = () => {
-        
-      
         return (
             <div>
-                   <Styled.table>
- 
- <tr>
-   <Styled.td>Peter</Styled.td>
-   <Styled.td>Griffin</Styled.td>
-   <Styled.td>$100</Styled.td>
- </tr>
- <tr>
-   <Styled.td>Lois</Styled.td>
-   <Styled.td>Griffin</Styled.td>
-   <Styled.td>$150</Styled.td>
- </tr>
-</Styled.table>
-            <Styled.div>
-            <h3> Bonjour Admin</h3>
-     
-            <Styled.form onSubmit={this.handleSubmit}>
-            <h5>{this.props.students.length} Etudiants sont enregistrés</h5>
-
-              <Styled.Button__Text type="submit">Voir les groupes</Styled.Button__Text>
-               </Styled.form>
-            </Styled.div>
-
+                <Styled.div>
+                <h3> Bonjour Admin</h3>
+        
+                <Styled.form onSubmit={this.handleSubmit}>
+                <h5>{this.props.students.length} Etudiants sont enregistrés</h5>
+                    <Styled.input type="number" name="nbr" className="nbr" placeholder="Nombre de groupes" />
+                    <Styled.Button__Text type="submit">Voir les groupes</Styled.Button__Text>
+                </Styled.form>
+                </Styled.div>
             </div>
-
-        )
+        );
     }
   }
 

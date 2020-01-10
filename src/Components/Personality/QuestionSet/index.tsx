@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Styled } from './index.styled'
-import { questionSet,titles,letters } from '../data';
+import { questionSet,titles,letters,descriptions } from '../data';
 import { ApplicationState } from '../../../store';
 import { connect } from 'react-redux';
 import { doSurvey } from '../../../store/Survey/actions';
@@ -114,7 +114,7 @@ interface surveyState {
          )        
         }  
      );
-      
+     const e = this.state.result;
         return (
             <div>
             
@@ -132,6 +132,9 @@ interface surveyState {
                         {
                     this.state.result 
                     }
+    <p>{
+       
+    descriptions[e]}</p>
                      <Styled.Button__Text type="button" onClick={this.logout}>Logout</Styled.Button__Text>
                      </span>}
                    

@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 // Button.styles.ts
 const input = styled.input`
-position: absolute;
-opacity: 0;
-cursor: pointer;
-height: 0;
-width: 0;`;
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;`;
 const div = styled.div`
 font-family: Arial, Helvetica, sans-serif;
 width: 60%;
@@ -100,18 +101,7 @@ border: 3px solid #f1f1f1;
 padding: 50px`;
 
 
-const td = styled.table` 
-padding: 15px;
-`;
 
-const table = styled.table` 
-  border-collapse: collapse;
-  width: 100%;
-  & , ${td} {
-  border: 1px solid #ddd;
-  text-align: left;
-  }
-`;
 
 
 
@@ -129,6 +119,4 @@ export const Styled = {
   title,
   letter,
   form,
-  table,
-  td
 };
