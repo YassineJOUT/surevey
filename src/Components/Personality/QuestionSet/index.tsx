@@ -134,7 +134,8 @@ interface surveyState {
                     }
     <p>{
        
-    descriptions[e]}</p>
+    descriptions[e]
+    }</p>
                      <Styled.Button__Text type="button" onClick={this.logout}>Logout</Styled.Button__Text>
                      </span>}
                    
