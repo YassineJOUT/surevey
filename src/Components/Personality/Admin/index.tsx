@@ -32,37 +32,25 @@ interface ISurveyProps {
       
         return (
             <div>
-            
+                   <Styled.table>
+ 
+ <tr>
+   <Styled.td>Peter</Styled.td>
+   <Styled.td>Griffin</Styled.td>
+   <Styled.td>$100</Styled.td>
+ </tr>
+ <tr>
+   <Styled.td>Lois</Styled.td>
+   <Styled.td>Griffin</Styled.td>
+   <Styled.td>$150</Styled.td>
+ </tr>
+</Styled.table>
             <Styled.div>
             <h3> Bonjour Admin</h3>
+     
             <Styled.form onSubmit={this.handleSubmit}>
             <h5>{this.props.students.length} Etudiants sont enregistrés</h5>
-          
-                <Styled.table >
-                    <tr>
-                        <Styled.th>T</Styled.th>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                    </tr>
-                    <tr>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                    </tr>
-                    <tr>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                        <Styled.td>T</Styled.td>
-                    </tr>
-                
-                  
-                </Styled.table>
+
               <Styled.Button__Text type="submit">Voir les groupes</Styled.Button__Text>
                </Styled.form>
             </Styled.div>
@@ -72,7 +60,6 @@ interface ISurveyProps {
         )
     }
   }
-
 
   const mapStateToProps = ({ student }: ApplicationState) => ({
     students: student.students,

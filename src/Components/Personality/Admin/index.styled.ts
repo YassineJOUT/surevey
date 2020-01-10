@@ -99,9 +99,6 @@ const form = styled.form`
 border: 3px solid #f1f1f1;
 padding: 50px`;
 
-const th = styled.table` 
-padding: 15px;
-`;
 
 const td = styled.table` 
 padding: 15px;
@@ -110,7 +107,7 @@ padding: 15px;
 const table = styled.table` 
   border-collapse: collapse;
   width: 100%;
-  & ,${th},${td} {
+  & , ${td} {
   border: 1px solid #ddd;
   text-align: left;
   }
@@ -133,6 +130,5 @@ export const Styled = {
   letter,
   form,
   table,
-  th,
   td
 };
